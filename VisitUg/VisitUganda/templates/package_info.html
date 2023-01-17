@@ -1,0 +1,101 @@
+{% extends 'client_main.html' %}
+{% load static %}
+{% block content %}
+<div class="site-header">
+  <div class="container">
+      <div class="main-header">
+          <div class="row">
+              <div class="col-md-4 col-sm-6 col-xs-10">
+                  <div class="logo">
+                      <a href="#">
+                          <img src="{% static 'images/logo.png' %}" alt="travel html5 template" title="travel html5 template">
+                      </a>
+                  </div> <!-- /.logo -->
+              </div> <!-- /.col-md-4 -->
+              <div class="col-md-8 col-sm-6 col-xs-2">
+                  <div class="main-menu">
+                      <ul class="visible-lg visible-md">
+                          <li><a href="{% url 'index' %}">Home</a></li>
+                          <li><a href="{% url 'services' %}">Companies</a></li>
+                          <li class="active"><a href="{% url 'events' %}">{{package.name}}</a></li>
+                        <li><a href="{% url 'about' %}">About Us</a></li>
+                          <li><a href="{% url 'contact' %}">Contact</a></li>
+                          {% if request.user.is_authenticated %}
+                                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                                    {% endif %}
+                      </ul>
+                      <a href="#" class="toggle-menu visible-sm visible-xs">
+                          <i class="fa fa-bars"></i>
+                      </a>
+                  </div> <!-- /.main-menu -->
+              </div> <!-- /.col-md-8 -->
+          </div> <!-- /.row -->
+      </div> <!-- /.main-header -->
+      <div class="row">
+          <div class="col-md-12 visible-sm visible-xs">
+              <div class="menu-responsive">
+                  <ul>
+                      <li><a href="{% url 'index' %}">Home</a></li>
+                      <li><a href="{% url 'services' %}">Services</a></li>
+                      <li class="active"><a href="{% url 'events' %}">{{package.name}}</a></li>
+                      <li><a href="{% url 'about' %}">About Us</a></li>
+                      <li><a href="contact.html">Contact</a></li>
+                      {% if request.user.is_authenticated %}
+                                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                                    {% endif %}
+                  </ul>
+              </div> <!-- /.menu-responsive -->
+          </div> <!-- /.col-md-12 -->
+      </div> <!-- /.row -->
+  </div> <!-- /.container -->
+</div> <!-- /.site-header -->
+
+<div class="page-top" id="templatemo_events">
+</div> <!-- /.page-header -->
+
+<div class="middle-content">
+  <div class="container">
+  
+      <div class="row" style="margin: 10px"><!-- first row -->
+        <h2 style="font-size: 40px; margin-bottom: 10px">Company: {{package.company.name}}</h2>
+        <h2 style="font-size: 40px; margin-bottom: 10px">Price Per Person: ${{package.price}}</h2>
+        <center><h2 style="font-size: 40px; margin-bottom: 10px">Activities</h2></center>
+      {% for activity in activities %}
+        <div class="col-md-4"><!-- first column -->
+            <div class="widget-item">
+                <h3 class="widget-title">{{activity.name}}</h3>
+                <div class="sample-thumb">
+                    <img src="{{activity.img.url}}" alt="{{activity.name}}" title="{{activity.name}}" style="height: 300px">
+                </div> <!-- /.sample-thumb -->
+                <h4 class="consult-title">{{activity.description}}</h4>
+                
+            </div> <!-- /.widget-item -->
+        </div> <!-- /.col-md-4 -->  
+        {% endfor %}
+      </div> <!-- /.row first -->
+      
+      <div class="row"><!-- second row -->
+        <center><h2 style="font-size: 40px; margin-bottom: 10px">Hotels</h2></center>
+        {% for hotel in hotels %}
+        <div class="col-md-4"><!-- first column -->
+            <div class="widget-item">
+                <h3 class="widget-title">{{hotel.accomodation.name}}</h3>
+                <div class="sample-thumb">
+                    <img src="{{hotel.accomodation.img.url}}" alt="{{hotel.accomodation.name}}" title="{{hotel.accomodation.name}}" style="height: 300px">
+                </div> <!-- /.sample-thumb -->
+                <h4 class="consult-title">{{hotel.accomodation.location}}</h4>
+            </div> <!-- /.widget-item -->
+        </div> <!-- /.col-md-4 -->  
+        {% endfor %}
+      </div> <!-- /.row second -->
+      <div class="post-content">
+        <div class="ticket-item">
+            <a href="book/{{package.id}}" class="ticket-btn">Book Now</a>
+        </div>
+    </div>
+      
+  </div> <!-- /.container -->
+</div> <!-- /.middle-content -->
+
+
+{% endblock content %}

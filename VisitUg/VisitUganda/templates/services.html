@@ -1,0 +1,159 @@
+
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+{% extends 'client_main.html' %}
+{% load static %}
+
+{% block content %}
+        <div class="site-header">
+            <div class="container">
+                <div class="main-header">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6 col-xs-10">
+                            <div class="logo">
+                                <a href="#">
+                                    <img src="{% static 'images/logo.png' %}" alt="travel html5 template" title="travel html5 template">
+                                </a>
+                            </div> <!-- /.logo -->
+                        </div> <!-- /.col-md-4 -->
+                        <div class="col-md-8 col-sm-6 col-xs-2">
+                            <div class="main-menu">
+                                <ul class="visible-lg visible-md">
+                                    <li><a href="{% url 'index' %}">Home</a></li>
+                                    <li class="active"><a href="{% url 'services' %}">Companies</a></li>
+                                    <li><a href="{% url 'events' %}">services</a></li>
+                                    <li><a href="{% url 'about' %}">About Us</a></li>
+                                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                                    {% if request.user.is_authenticated %}
+                                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                                    {% endif %}
+                                </ul>
+                                <a href="#" class="toggle-menu visible-sm visible-xs">
+                                    <i class="fa fa-bars"></i>
+                                </a>
+                            </div> <!-- /.main-menu -->
+                        </div> <!-- /.col-md-8 -->
+                    </div> <!-- /.row -->
+                </div> <!-- /.main-header -->
+                <div class="row">
+                    <div class="col-md-12 visible-sm visible-xs">
+                        <div class="menu-responsive">
+                            <ul>
+                                <li><a href="{% url 'index' %}">Home</a></li>
+                                <li class="active"><a href="{% url 'services' %}">Companies</a></li>
+                                <li><a href="{% url 'events' %}">Services</a></li>
+                                <li><a href="{% url 'about' %}">About Us</a></li>
+                                <li><a href="{% url 'contact' %}">Contact</a></li>
+                                {% if request.user.is_authenticated %}
+                                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                                    {% endif %}
+                            </ul>
+                        </div> <!-- /.menu-responsive -->
+                    </div> <!-- /.col-md-12 -->
+                </div> <!-- /.row -->
+            </div> <!-- /.container -->
+        </div> <!-- /.site-header -->
+
+        <div class="page-top" id="templatemo_services">
+        </div> <!-- /.page-header -->
+
+        <div class="middle-content">
+            <div class="container">
+                <div class="row">
+                    {% for company in companies %}
+                    <div class="col-md-4">
+                        <div class="widget-item">
+                            <h3 class="widget-title">{{company.name}}</h3>
+                            <div class="post-small">
+                                <img src="{{company.img.url}}" alt="{{company.name}}" style="margin-bottom: 10px; height: 300px;">
+                                {% comment %} <div class="post-date">
+                                    <span class="time">18</span>
+                                    <span>June</span>
+                                </div> <!-- /.post-thumb --> {% endcomment %}
+                                <div class="post-content">
+                                    <div class="ticket-item">
+                                        <h4><a href="#">{{company.location}}</a></h4>
+                                        <p>{{company.email}}<br><br>{{company.mission}}</p>
+                                        <a href="company/{{company.id}}" class="ticket-btn">Read More</a>
+                                    </div>
+                                </div> <!-- /.post-content -->
+                            </div> <!-- /.post-small -->
+                        </div> <!-- /.widget-item -->
+                    </div> <!-- /.col-md-4 -->
+                    {% endfor %}
+                </div> <!-- /.row -->
+            </div> <!-- /.container -->
+        </div> <!-- /.middle-content -->
+
+
+
+        <div class="go-act">
+            <div class="container">
+                <div class="row">
+                    {% comment %} <div class="col-md-4">
+                        <div class="first-map"></div>
+                    </div> <!-- /.col-md-4 --> {% endcomment %}
+                    <div class="col-md-8">
+                        <div class="act-btn">
+                            <div class="inner">
+                                <div class="price">
+                                    $2,600
+                                </div> <!-- /.price -->
+                                <div class="title">
+                                    <h2>Uganda Tour</h2>
+                                    <span>
+                                        {% for city in cities %}
+                                        {{city.name}}, 
+                                        {% endfor %}
+                                    </span>
+                                </div>
+                            </div> <!-- /.inner -->
+                            <a href="#" class="link">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div> <!-- /.act-btn -->
+                    </div> <!-- /.col-md-8 -->
+                </div> <!-- /.row -->
+            </div> <!-- /.container -->
+        </div> <!-- /.go-act -->
+
+
+
+        <div class="ticket-list">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="ticket-item">
+                            <h4><a href="#">Airlines</a></h4>
+                            <p>Travel HTML Template is provided by <span class="blue">template</span><span class="green">mo</span>. Download, modify and use this layout for your travel or tour websites.<br><br> Aliquam justo lectus, fermentum vitae libero sollicitudin, tincidunt accumsan magna.Vestibulum congue lorem odio, at sodales nisi luctus quis.</p>
+                            <a href="#" class="ticket-btn">Buy a ticket</a>
+                        </div> <!-- /.ticket-item -->
+                    </div> <!-- /.col-md-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="ticket-item">
+                            <h4><a href="#">Best Cities</a></h4>
+                            {% for city in cities %}
+                            <p>{{city.name}} {{city.region}} Region</p><br>
+                            {% endfor %}
+                            <a href="#" class="ticket-btn">Explore Cities</a>
+                        </div> <!-- /.ticket-item -->
+                    </div> <!-- /.col-md-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="ticket-item">
+                            <h4><a href="#">Travel Guides</a></h4>
+                            <p>Suspendisse id felis ac orci dignissim efficitur non eget elit. Maecenas lacinia sodales aliquet. Maecenas consequat orci et neque convallis volutpat.<br><br> Integer viverra erat nisi, sed faucibus velit ultricies facilisis. Nam eu felis ac ex fermentum scelerisque.</p>
+                            <a href="#" class="ticket-btn">Details</a>
+                        </div> <!-- /.ticket-item -->
+                    </div> <!-- /.col-md-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="ticket-item">
+                            <h4><a href="#">Special Events</a></h4>
+                            <p>Aliquam ultricies eros commodo, scelerisque lorem sit amet, mollis odio. Ut malesuada sapien sit amet risus lobortis bibendum. Pellentesque eu ante augue.<br><br>Mauris vel tincidunt purus. Aenean laoreet ornare purus. Nunc condimentum augue sed massa iaculis, vel blandit.</p>
+                            <a href="#" class="ticket-btn">Check a calendar</a>
+                        </div> <!-- /.ticket-item -->
+                    </div> <!-- /.col-md-3 -->
+                </div> <!-- /.row -->
+            </div> <!-- /.container -->
+        </div> <!-- /.ticket-list -->
+        {% endblock content %}    

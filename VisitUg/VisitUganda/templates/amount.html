@@ -1,0 +1,119 @@
+{% extends 'client_main.html' %}
+{% load static %}
+{% block content %}
+<div class="site-header">
+  <div class="container">
+      <div class="main-header">
+          <div class="row">
+              <div class="col-md-4 col-sm-6 col-xs-10">
+                  <div class="logo">
+                      <a href="#">
+                          <img src="{% static 'images/logo.png' %}" alt="travel html5 template" title="travel html5 template">
+                      </a>
+                  </div> <!-- /.logo -->
+              </div> <!-- /.col-md-4 -->
+              <div class="col-md-8 col-sm-6 col-xs-2">
+                  <div class="main-menu">
+                      <ul class="visible-lg visible-md">
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li><a href="{% url 'services' %}">Services</a></li>
+                        <li><a href="{% url 'events' %}">Events</a></li>
+                        <li><a href="{% url 'about' %}">About Us</a></li>
+                        <li class="active"><a href="book/{{package.id}}">Book</a></li>
+                        {% if request.user.is_authenticated %}
+                                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                                    {% endif %}
+                      </ul>
+                      <a href="#" class="toggle-menu visible-sm visible-xs">
+                          <i class="fa fa-bars"></i>
+                      </a>
+                  </div> <!-- /.main-menu -->
+              </div> <!-- /.col-md-8 -->
+          </div> <!-- /.row -->
+      </div> <!-- /.main-header -->
+      <div class="row">
+          <div class="col-md-12 visible-sm visible-xs">
+              <div class="menu-responsive">
+                  <ul>
+                      <li><a href="{% url 'index' %}">Home</a></li>
+                      <li><a href="{% url 'services' %}">Services</a></li>
+                      <li><a href="{% url 'events' %}">Events</a></li>
+                      <li><a href="{% url 'about' %}">About Us</a></li>
+                      <li class="active"><a href="{% url 'contact' %}">Contact</a></li>
+                      {% if request.user.is_authenticated %}
+                                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                                    {% endif %}
+                  </ul>
+              </div> <!-- /.menu-responsive -->
+          </div> <!-- /.col-md-12 -->
+      </div> <!-- /.row -->
+  </div> <!-- /.container -->
+</div> <!-- /.site-header -->
+
+<div class="page-top" id="templatemo_contact">
+</div> <!-- /.page-header -->
+
+<div class="contact-page">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-7 col-sm-6 map-wrapper">
+              <h3 class="widget-title">Our Location</h3>
+              <div class="map-holder"></div>
+              <div class="contact-infos">
+                  <ul>
+                      <li>987 Nay Yar Street, Analog Estate</li>
+                      <li>Yangon 10440, Myanmar</li>
+                      <li>Tel: 090-090-0880</li>
+                      <li>Email: <a href="mailto:info@company.com">info@company.com</a></li>
+                  </ul>
+              </div>
+          </div>
+          <div class="col-md-5 col-sm-6">
+            <label> <h1 style="font-size: 30px; margin: 10px" align="center">Amount to pay: $ {{ amount }}</h1></label>
+              <div class="contact-form">
+                      <!-- Set up a container element for the button -->
+    <div id="paypal-button-container"></div>
+
+    <!-- Include the PayPal JavaScript SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=ARuKJK49_9iMVii_dqaJbkzgvcr_g2xUFw0DTMSQGyni9KOsntnTogufMEBQFZnuzCzasrGmcWIhPCkD&currency=USD"></script>
+
+    <script>
+        // Render the PayPal button into #paypal-button-container
+        paypal.Buttons({
+
+            // Set up the transaction
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '{{amount}}'
+                        }
+                    }]
+                });
+            },
+
+            // Finalize the transaction
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(orderData) {
+                    // Successful capture! For demo purposes:
+                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                    var transaction = orderData.purchase_units[0].payments.captures[0];
+                    alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+
+                    // Replace the above to show a success message within this page, e.g.
+                    // const element = document.getElementById('paypal-button-container');
+                    // element.innerHTML = '';
+                    // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                    // Or go to another URL:  actions.redirect('thank_you.html');
+                });
+            }
+
+
+        }).render('#paypal-button-container');
+    </script>
+              </div> <!-- /.contact-form -->
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,238 @@
+{% extends 'client_main.html' %}
+{% load static %}
+{% block content %}
+<div class="site-header">
+  <div class="container">
+      <div class="main-header">
+          <div class="row">
+              <div class="col-md-4 col-sm-6 col-xs-10">
+                  <div class="logo">
+                      <a href="#">
+                          <img src="{% static 'images/logo.png' %}" alt="travel html5 template" title="travel html5 template">
+                      </a>
+                  </div> <!-- /.logo -->
+              </div> <!-- /.col-md-4 -->
+              <div class="col-md-8 col-sm-6 col-xs-2">
+                  <div class="main-menu">
+                      <ul class="visible-lg visible-md">
+                          <li><a href="{% url 'index' %}">Home</a></li>
+                          <li><a href="{% url 'services' %}">Companies</a></li>
+                          <li class="active"><a href="{% url 'events' %}">{{company.name}}</a></li>
+                        <li><a href="{% url 'about' %}">About Us</a></li>
+                          <li><a href="{% url 'contact' %}">Contact</a></li>
+                          {% if request.user.is_authenticated %}
+                                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                                    {% endif %}
+                      </ul>
+                      <a href="#" class="toggle-menu visible-sm visible-xs">
+                          <i class="fa fa-bars"></i>
+                      </a>
+                  </div> <!-- /.main-menu -->
+              </div> <!-- /.col-md-8 -->
+          </div> <!-- /.row -->
+      </div> <!-- /.main-header -->
+      <div class="row">
+          <div class="col-md-12 visible-sm visible-xs">
+              <div class="menu-responsive">
+                  <ul>
+                      <li><a href="{% url 'index' %}">Home</a></li>
+                      <li><a href="{% url 'services' %}">Services</a></li>
+                      <li class="active"><a href="{% url 'events' %}">{{company.name}}</a></li>
+                      <li><a href="{% url 'about' %}">About Us</a></li>
+                      <li><a href="contact.html">Contact</a></li>
+                      {% if request.user.is_authenticated %}
+                                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                                    {% endif %}
+                  </ul>
+              </div> <!-- /.menu-responsive -->
+          </div> <!-- /.col-md-12 -->
+      </div> <!-- /.row -->
+  </div> <!-- /.container -->
+</div> <!-- /.site-header -->
+
+<div class="page-top" id="templatemo_events">
+</div> <!-- /.page-header -->
+
+<div class="middle-content">
+  <div class="container">
+  
+      <div class="row"><!-- first row -->
+      
+        <div class="col-md-4" style="margin: 5px"><!-- first column -->
+          
+              <div class="widget-item">
+              
+                  <h3 class="widget-title">Services Offered</h3>
+                  <div class="service-item">
+                      <div class="service-icon">
+                          <i class="fa fa-rocket"></i>
+                      </div> <!-- /.service-icon -->
+                    <div class="service-content">
+                      <h4>Transport</h4>
+                        <p>Change icons by <a rel="nofollow" href="http://fontawesome.info/font-awesome-icon-world-map/">Font Awesome</a> (version 4). Example: Some jazz</p>
+                      </div> 
+                      <!-- /.service-content -->
+                  </div> <!-- /.service-item -->
+                  
+                  <div class="service-item">
+                      <div class="service-icon">
+                          <i class="fa fa-trophy"></i>
+                      </div> <!-- /.service-icon -->
+                      <div class="service-content">
+                          <h4>Tour Guides</h4>
+                          <p>Nunc aliquam vestibulum veliesat, et aliquet lorem aliquet nec. Sed orsum rhoncus.</p>
+                      </div> <!-- /.service-content -->
+                  </div> <!-- /.service-item -->
+                  
+                  <div class="service-item">
+                      <div class="service-icon">
+                          <i class="fa fa-heart"></i>
+                      </div> <!-- /.service-icon -->
+                      <div class="service-content">
+                          <h4>Accomodation</h4>
+                          <p>Nunc aliquam vestibulum veliesat, et aliquet lorem aliquet nec. Sed orsum rhoncus.</p>
+                      </div> <!-- /.service-content -->
+                  </div> <!-- /.service-item -->
+                  
+                  <div class="service-item">
+                      <div class="service-icon">
+                          <i class="fa fa-globe"></i>
+                      </div> <!-- /.service-icon -->
+                      <div class="service-content">
+                          <h4>Meals</h4>
+                          <p>Nunc aliquam vestibulum veliesat, et aliquet lorem aliquet nec. Sed orsum rhoncus.</p>
+                      </div> <!-- /.service-content -->
+                  </div> <!-- /.service-item -->
+                  
+              </div> <!-- /.widget-item -->
+              
+          </div> <!-- /.col-md-4 -->
+          
+          <div class="col-md-4" style="margin: 5px"><!-- second column -->
+              <div class="widget-item">
+                  <h3 class="widget-title">{{company.name}}</h3>
+                  <div class="sample-thumb">
+                      <img src="{{company.img.url}}" alt="{{company.name}}" title="{{company.name}}" style="margin-bottom: 10px; height: 250px;">
+                  </div> <!-- /.sample-thumb -->
+                  <h4 class="consult-title">{{company.mission}}</h4>
+                  <p>{{company.location}}</p>
+              </div> <!-- /.widget-item -->
+          </div> <!-- /.col-md-4 -->
+          
+          <div class="widget-item" style="margin: 5px">
+              
+            <h3 class="widget-title">Stats</h3>
+            
+            <div class="service-item">
+                <div class="service-icon">
+                    <i class="fa fa-trophy"></i>
+                </div> <!-- /.service-icon -->
+                <div class="service-content">
+                    <h4 style="margin: 5px">Packages</h4>
+                    <p>{{numOfPackages}}</p>
+                </div> <!-- /.service-content -->
+            </div> <!-- /.service-item -->
+            
+            <div class="service-item">
+                <div class="service-icon">
+                    <i class="fa fa-heart"></i>
+                </div> <!-- /.service-icon -->
+                <div class="service-content">
+                    <h4 style="margin: 5px">Accomodation Options</h4>
+                    <p>{{numOfHotels}}</p>
+                </div> <!-- /.service-content -->
+            </div> <!-- /.service-item -->
+            
+            <div class="service-item" style="padding: 5px">
+                <div class="service-icon">
+                    <i class="fa fa-globe"></i>
+                </div> <!-- /.service-icon -->
+                <div class="service-content">
+                    <h4 style="margin: 5px">Activities</h4>
+                    <p>{{numOfActivities}}</p>
+                </div> <!-- /.service-content -->
+            </div> <!-- /.service-item -->
+            
+        </div> <!-- /.widget-item -->
+          
+          
+          
+      </div> <!-- /.row first -->
+      <div class="row"><!-- second row -->
+        <h2 style="font-size: 30px; margin-bottom: 20px">Packages Offered By {{company.name}}</h2>
+      {% for package in packages %}
+        <div class="col-md-4" style="margin-bottom: 10px"><!-- first column -->
+              <div class="widget-item">
+                  <h3 class="widget-title">{{package.name}}</h3>
+                  <div class="sample-thumb">
+                      <img src="{{package.img.url}}" alt="{{package.name}}" title="{{package.name}}" style="height: 200px">
+                  </div> <!-- /.sample-thumb -->
+                  <h4 style="margin-top: 10px; margin-bottom: -10px;">Activities</h4>
+                  <h4 class="consult-title">
+                    {% for activity in activities %}
+                                    {% if activity.package.name == package.name %}
+                                    {{activity.name}}, 
+                                    {% endif %}
+                    {% endfor %}
+                  </h4>
+                  <h4 style="margin-top: 10px; margin-bottom: 10px;">Accomodation</h4>
+                  <p>
+                    {% for hotel in hotels%}
+                                    {% if hotel.package.id == package.id %}
+                                    {{hotel.accomodation.name}}, 
+                                    {% endif %}
+                                {% endfor %} 
+                  <br><br>{{package.description}}</p>
+              </div> <!-- /.widget-item -->
+              <a href="package/{{package.id}}" class="price-btn" style="font-size: 20px">View More</a>
+          </div> <!-- /.col-md-4 -->
+        {% endfor %}
+      </div> <!-- /.row second -->
+      {% if testimonials %}
+      <div class="row"><!-- second row -->
+        <h2 style="font-size: 30px; margin-bottom: 20px">Testimonials About {{company.name}}</h2>
+        <section class="home-testimonial">
+          <div class="container-fluid">
+              <div class="row d-flex justify-content-center testimonial-pos">
+                  <div class="col-md-12 d-flex justify-content-center">
+                      <h2>Explore the other customers' experience</h2>
+                  </div>
+              </div>
+              <section class="home-testimonial-bottom">
+                  <div class="container testimonial-inner">
+                      <div class="row d-flex justify-content-center">
+                        {% for testimonial in testimonials %}
+                          <div class="col-md-4 style-3">
+                              <div class="tour-item ">
+                                  <div class="tour-desc bg-white">
+                                      <div class="tour-text color-grey-3 text-center">&ldquo;{{testimonial.message}}&rdquo;</div>
+                                      <div class="d-flex justify-content-center pt-2 pb-2"><img class="tm-people" src="{{testimonial.img.url}}" alt=""></div>
+                                      <div class="link-name d-flex justify-content-center">{{testimonial.username.last_name}} {{testimonial.username.first_name}}</div>
+                                      <div class="link-position d-flex justify-content-center">Customer</div>
+                                  </div>
+                              </div>
+                          </div>
+                          {% endfor %}
+                          </div>
+                      </div>
+              </section>
+      </section>
+      {% endif %}
+      <div class="post-content" style="margin-top: 20px;">
+        <div class="ticket-item">
+            <form action="{% url 'testimonials' %}" method='GET'>
+                {% csrf_token %}
+                <input type="hidden" name="companyId" value="{{company.id}}">
+                <input type="hidden" name="userId" value="{{user.id}}">
+                <input type="submit" value="Add Testimonial">
+            </form>
+        </div>
+    </div>
+      </div> <!-- /.row second -->
+      
+  </div> <!-- /.container -->
+</div> <!-- /.middle-content -->
+
+
+
+{% endblock content %}

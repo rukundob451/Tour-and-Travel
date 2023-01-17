@@ -1,0 +1,76 @@
+{% extends 'admin_main.html' %}
+{% block content %}
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">Dashboard</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-primary text-white mb-4">
+                                    <div class="card-body">Companies</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <h4 class="small text-white stretched-link">{{numOfCompanies}}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-warning text-white mb-4">
+                                    <div class="card-body">Packages</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <h4 class="small text-white stretched-link">{{numOfPackages}}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-success text-white mb-4">
+                                    <div class="card-body">Registered Customers</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <h4 class="small text-white stretched-link">{{numOfCustomers}}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-danger text-white mb-4">
+                                    <div class="card-body">Activities</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <h4 class="small text-white stretched-link">{{numOfActivities}}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Companies
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Location</th>
+                                            <th>Account Number</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Location</th>
+                                            <th>Account Number</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        {% for company in companies%}
+                                        <tr>
+                                            <td>{{company.name}}</td>
+                                            <td>{{company.location}}</td>
+                                            <td>{{company.account}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+{% endblock content %}

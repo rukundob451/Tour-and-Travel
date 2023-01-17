@@ -1,0 +1,150 @@
+{% extends 'client_main.html' %}
+{% load static %}
+{% block content %}
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+
+        <div class="site-header">
+            <div class="container">
+                <div class="main-header">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6 col-xs-10">
+                            <div class="logo">
+                                <form class = "form-inline my-2 my-lg-0">
+                                    <input class  "form-control mr-sm-2" type ='Search' name= 'q' placeholder='packages, hotels, activity'/>
+                                    <button class='btn btn-outline-success mr-sm-0'>Search</button>
+                                   </form>
+
+                            </div> <!-- /.logo -->
+
+                        </div> <!-- /.col-md-4 -->
+                        <div class="col-md-8 col-sm-6 col-xs-2">
+                            <div class="main-menu">
+                                <ul class="visible-lg visible-md">
+                                    <li class="active"><a href="{% url 'index' %}">Home</a></li>
+                                    <li><a href="{% url 'services' %}">Companies</a></li>
+                                    <li><a href="{% url 'events' %}">Services</a></li>
+                                    <li><a href="{% url 'about' %}">About Us</a></li>
+                                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                                    {% if request.user.is_authenticated %}
+                                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                                    {% endif %}
+                                </ul>
+                                <a href="#" class="toggle-menu visible-sm visible-xs">
+                                    <i class="fa fa-bars"></i>
+                                </a>
+                            </div> <!-- /.main-menu -->
+                        </div> <!-- /.col-md-8 -->
+                    </div> <!-- /.row -->
+                </div> <!-- /.main-header -->
+                <div class="row">
+                    <div class="col-md-12 visible-sm visible-xs">
+                        <div class="menu-responsive">
+                            <ul>
+                                <li class="active"><a href="{% url 'index' %}">Home</a></li>
+                                    <li><a href="{% url 'services' %}">Companies</a></li>
+                                    <li><a href="{% url 'events' %}">Services</a></li>
+                                    <li><a href="{% url 'about' %}">About Us</a></li>
+                                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                            </ul>
+                        </div> <!-- /.menu-responsive -->
+                    </div> <!-- /.col-md-12 -->
+                </div> <!-- /.row -->
+            </div> <!-- /.container -->
+        </div> <!-- /.site-header -->
+
+
+        <div class="flexslider">
+            <ul class="slides">
+                <li>
+                    <div class="overlay"></div>
+                    <img src="{% static 'images/templatemo_slide_1.jpg' %}" alt="Special 1">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-5 col-lg-4">
+                                <div class="flex-caption visible-lg">
+                                    <h3 class="title">Nile, Jinja</h3>
+                                    <p>Travel is a responsive Bootstrap layout from 
+                                    <span class="blue">template</span><span class="green">mo</span> website.
+										All images used in this template are from 
+                            			<a rel="nofollow" href="http://unsplash.com" target="_parent">Unsplash</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="overlay"></div>
+                    <img src="{% static 'images/templatemo_slide_2.jpg' %}" alt="Special 2">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-5 col-lg-4">
+                                <div class="flex-caption visible-lg">
+                                    <h3 class="title">Mburo, Kisoro</h3>
+                                    <p>You may visit <a href="http://tourkrub.co" target="_parent">Tour Krub</a> for Thai Tour Packages. Duis fermentum nibh sit amet felis mattis, eu convallis risus egestas.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="overlay"></div>
+                    <img src="{% static 'images/templatemo_slide_3.jpg' %}" alt="Special 3">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-5 col-lg-4">
+                                <div class="flex-caption visible-lg">
+                                    <span class="price">$2,800</span>
+                                    <h3 class="title">Kidepo, Moroto</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis fermentum nibh sit amet felis mattis, eu convallis risus egestas.</p>
+                                    <a href="#" class="slider-btn">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+        
+        <div class="container">
+            <div class="row">
+                <div class="our-listing owl-carousel">
+                    {% for package in packages %}
+                    <div class="list-item">
+                        <div class="list-thumb">
+                            <div class="title">
+                                <h4>{{package.name}}</h4>
+                            </div>
+                            <img src="{{package.img.url}}" alt="{{package.name}}" style="height: 200px">
+                        </div> <!-- /.list-thumb -->
+                        <div class="list-content">
+                            <h4 style="margin-top: 10px; margin-bottom: -10px;">Activities<h4>
+                            <h5>
+                                {% for activity in activities %}
+                                    {% if activity.package.name == package.name %}
+                                    {{activity.name}},  
+                                    {% endif %}
+                                {% endfor %}
+                            </h5>
+                            <h4 style="margin-top: 10px;">Accomodation<h4>
+                            <span>
+                                {% for hotel in hotels%}
+                                    {% if hotel.package.id == package.id %}
+                                    {{hotel.accomodation.name}}, 
+                                    {% endif %}
+                                {% endfor %}
+                            </span>
+                            <a href="package/{{package.id}}" class="price-btn">View More</a>
+                        </div> <!-- /.list-content -->
+                    </div> 
+                    {% endfor %}
+                </div> <!-- /.our-listing -->
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+
+		<div class="middle-content"></div>
+
+        {% endblock content %}

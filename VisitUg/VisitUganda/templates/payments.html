@@ -1,0 +1,36 @@
+{% extends 'admin_main.html' %}
+{% block content %}
+<div class="card mb-4">
+  <div class="card-header">
+      <i class="fas fa-table me-1"></i>
+      Payments
+  </div>
+  <div class="card-body">
+      <table id="datatablesSimple">
+          <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Location</th>
+                  <th>Email</th>
+              </tr>
+          </thead>
+          <tfoot>
+              <tr>
+                <th>Name</th>
+                  <th>Username</th>
+                  <th>Email</th>
+              </tr>
+          </tfoot>
+          <tbody>
+            {% for customer in  customers %}
+              <tr>
+                  <td>{{customer.last_name}} {{customer.first_name}}</td>
+                  <td>{{customer.username}}</td>
+                  <td>{{customer.email}}</td>
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+  </div>
+</div>
+{% endblock content %}

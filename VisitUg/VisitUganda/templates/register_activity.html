@@ -1,0 +1,36 @@
+{% extends 'admin_main.html' %}
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="col-lg-5">
+              <div class="card-body">
+                <h2>Register Activity</h2>
+                   <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                      <div class="form-floating mb-3">
+                          <input class="form-control"  type="text" name="name" />
+                          <label>Name</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <select class="form-control" name="package">
+                          {% for package in packages %}
+                          <option>{{package.name}}</option>
+                          {% endfor %}
+                        </select>
+                        <label>Package</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input class="form-control" type="file" name="image" />
+                        <label>Image</label>
+                    </div>
+
+                    
+                    <div class="form-floating mb-3">
+                        <input class="form-control"  type="text" name="desc"value="" />
+                        <label >Description</label>
+                    </div>
+                      <div class="d-flex align-items-center justify-content-between mt-4 mb-0">  
+                          <input class="form-control" type="submit" value="Register Activity" style="background-color: #333; color: #ccc">
+                      </div>
+                  </form> 
+    {% endblock content %}

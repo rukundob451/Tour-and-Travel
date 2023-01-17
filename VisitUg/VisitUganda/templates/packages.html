@@ -1,0 +1,36 @@
+{% extends 'admin_main.html' %}
+{% block content %}
+<div class="card mb-4">
+  <div class="card-header">
+      <i class="fas fa-table me-1"></i>
+      Packages
+  </div>
+  <div class="card-body">
+      <table id="datatablesSimple">
+          <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Company</th>
+                  <th>Amount</th>
+              </tr>
+          </thead>
+          <tfoot>
+              <tr>
+                <th>Name</th>
+                <th>Company</th>
+                  <th>Amount</th>
+              </tr>
+          </tfoot>
+          <tbody>
+            {% for package in packages %}
+              <tr>
+                  <td>{{package.name}}</td>
+                  <td>{{package.company.name}}</td>
+                  <td>{{package.price}}</td>
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+  </div>
+</div>
+{% endblock content %}

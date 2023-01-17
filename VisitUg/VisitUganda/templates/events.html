@@ -1,0 +1,187 @@
+{% extends 'client_main.html' %}
+{% load static %}
+{% block content %}
+<div class="site-header">
+  <div class="container">
+      <div class="main-header">
+          <div class="row">
+              <div class="col-md-4 col-sm-6 col-xs-10">
+                  <div class="logo">
+                      <a href="#">
+                          <img src="{% static 'images/logo.png' %}" alt="travel html5 template" title="travel html5 template">
+                      </a>
+                  </div> <!-- /.logo -->
+              </div> <!-- /.col-md-4 -->
+              <div class="col-md-8 col-sm-6 col-xs-2">
+                  <div class="main-menu">
+                      <ul class="visible-lg visible-md">
+                          <li><a href="{% url 'index' %}">Home</a></li>
+                          <li><a href="{% url 'services' %}">Companies</a></li>
+                          <li class="active"><a href="{% url 'events' %}">Services</a></li>
+                        <li><a href="{% url 'about' %}">About Us</a></li>
+                          <li><a href="{% url 'contact' %}">Contact</a></li>
+                          {% if request.user.is_authenticated %}
+                                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                                    {% endif %}
+                      </ul>
+                      <a href="#" class="toggle-menu visible-sm visible-xs">
+                          <i class="fa fa-bars"></i>
+                      </a>
+                  </div> <!-- /.main-menu -->
+              </div> <!-- /.col-md-8 -->
+          </div> <!-- /.row -->
+      </div> <!-- /.main-header -->
+      <div class="row">
+          <div class="col-md-12 visible-sm visible-xs">
+              <div class="menu-responsive">
+                  <ul>
+                      <li><a href="{% url 'index' %}">Home</a></li>
+                      <li><a href="{% url 'services' %}">Services</a></li>
+                      <li class="active"><a href="{% url 'events' %}">Services</a></li>
+                      <li><a href="{% url 'about' %}">About Us</a></li>
+                      <li><a href="contact.html">Contact</a></li>
+                      {% if request.user.is_authenticated %}
+                                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                                    {% endif %}
+                  </ul>
+              </div> <!-- /.menu-responsive -->
+          </div> <!-- /.col-md-12 -->
+      </div> <!-- /.row -->
+  </div> <!-- /.container -->
+</div> <!-- /.site-header -->
+
+<div class="page-top" id="templatemo_events">
+</div> <!-- /.page-header -->
+
+<div class="middle-content">
+  <div class="container">
+  
+      <div class="row"><!-- first row -->
+      
+        <div class="col-md-4"><!-- first column -->
+          
+              <div class="widget-item">
+              
+                  <h3 class="widget-title">Our Services</h3>
+                  <div class="service-item">
+                      <div class="service-icon">
+                          <i class="fa fa-rocket"></i>
+                      </div> <!-- /.service-icon -->
+                    <div class="service-content">
+                      <h4>Passenger Assistance</h4>
+                        <p>On the trip there may be many unforeseen roblems and issues which need to be resolved, repatriation
+                            due to illnesss, accident or emergency, lost luggage or documents, etc
+                        </p>
+                      </div> 
+                      <!-- /.service-content -->
+                  </div> <!-- /.service-item -->
+                  
+                  <div class="service-item">
+                      <div class="service-icon">
+                          <i class="fa fa-trophy"></i>
+                      </div> <!-- /.service-icon -->
+                      <div class="service-content">
+                          <h4>Consulting</h4>
+                          <p>Consulting services includes a alarge numbe of aspects which are related,
+                            more or less directly with travel. Information of interest for the traveller(customs of the cities
+                            of destinations, reccommendations on behaviour, etc)
+                          </p>
+                      </div> <!-- /.service-content -->
+                  </div> <!-- /.service-item -->
+                  
+                  <div class="service-item">
+                      <div class="service-icon">
+                          <i class="fa fa-heart"></i>
+                      </div> <!-- /.service-icon -->
+                      <div class="service-content">
+                          <h4>Maerketting and internal communication</h4>
+                          <p>Due to its experience, a travel management agency can be very helpful in preparing travel policies 
+                            for companies(rules regarding expences, management per client)</p>
+                      </div> <!-- /.service-content -->
+                  </div> <!-- /.service-item -->
+                  
+                  <div class="service-item">
+                      <div class="service-icon">
+                          <i class="fa fa-globe"></i>
+                      </div> <!-- /.service-icon -->
+                      <div class="service-content">
+                          <h4>Tecnology</h4>
+                          <p>The proper and constantly updated use of technology is vital,
+                            not only for the requesting and comparison of travel services(tickets, accomodation, etc)
+                            but also for such diverse aspects as billing management or locating travellers in extreme situations
+                          </p>
+                      </div> <!-- /.service-content -->
+                  </div> <!-- /.service-item -->
+                  
+              </div> <!-- /.widget-item -->
+              
+          </div> <!-- /.col-md-4 -->
+          
+          <div class="col-md-4"><!-- second column -->
+              <div class="widget-item">
+                  <h3 class="widget-title">Leisure services</h3>
+                  <div class="sample-thumb">
+                      <img src="{% static 'images/event_1.jpg' %}" alt="New Event" title="New Event">
+                  </div> <!-- /.sample-thumb -->
+                  <h4 class="consult-title">    Leisure Services</h4>
+                  <p>In some cases, some travel management companies offer direct discounts or improved conditons on travel and leisure acivities for the 
+                    employees and their relatives at the companies at which they work.
+                  </p>
+              </div> <!-- /.widget-item -->
+          </div> <!-- /.col-md-4 -->
+          
+          
+          
+          
+          
+      </div> <!-- /.row first -->
+      
+      <div class="row"><!-- second row -->
+      
+        <div class="col-md-4"><!-- first column -->
+              <div class="widget-item">
+                  <h3 class="widget-title">Attractions</h3>
+                  <div class="sample-thumb">
+                      <img src="{% static 'images/event_3.jpg' %}" alt="New Event" title="New Event">
+                  </div> <!-- /.sample-thumb -->
+                  <h4 class="consult-title">Attractions</h4>
+                  <p>We offer the most amazing tourist attraction sites from all parts of the country</p>
+              </div> <!-- /.widget-item -->
+          </div> <!-- /.col-md-4 -->
+          
+          <div class="col-md-4"><!-- second column -->
+              <div class="widget-item">
+                  <h3 class="widget-title">Promotions</h3>
+                  <div class="sample-thumb">
+                      <img src="{% static 'images/event_4.jpg' %}" alt="New Event" title="New Event">
+                  </div> <!-- /.sample-thumb -->
+                  <h4 class="consult-title">Promotions</h4>
+                  <p>We help advertise all the tour companies in our country
+                    therefore connecting them t clients
+                    with whom they interact directly.
+                  </p>
+              </div> <!-- /.widget-item -->
+          </div> <!-- /.col-md-4 -->
+          
+          <div class="col-md-4"><!-- third column -->
+              <div class="widget-item">
+                  <h3 class="widget-title">Best Hotels</h3>
+                  <div class="sample-thumb">
+                      <img src="{% static 'images/event_5.jpg' %}" alt="Special Eve" title="Special Eve">
+                  </div> <!-- /.sample-thumb -->
+                  <h4 class="consult-title">Best Hotels</h4>
+                  <p>We provide the best places of accomodation nationwid with 
+                    a photo how they look to give an image to the customers of hoe they look
+                  </p>
+              </div> <!-- /.widget-item -->
+          </div> <!-- /.col-md-4 -->
+          
+          
+          
+      </div> <!-- /.row second -->
+      
+  </div> <!-- /.container -->
+</div> <!-- /.middle-content -->
+
+
+{% endblock content %}

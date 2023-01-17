@@ -1,0 +1,44 @@
+{% extends 'admin_main.html' %}
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="col-lg-5">
+              <div class="card-body">
+                <h2>Register Company</h2>
+                   <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                      <div class="form-floating mb-3">
+                          <input class="form-control"  type="text" name="name" />
+                          <label>Name</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                          <input class="form-control"  type="text" name="location"  />
+                          <label>Location</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                          <input  class="form-control" type="email" name="email" />
+                          <label >Email</label>
+                      </div>
+
+                      <div class="form-floating mb-3">
+                        <input class="form-control" type="text" name="account"/>
+                        <label >Account</label>
+                    </div>
+
+                    
+                    <div class="form-floating mb-3">
+                        <input class="form-control" type="file" name="image" />
+                        <label>Image</label>
+                    </div>
+
+                    
+                    <div class="form-floating mb-3">
+                        <input class="form-control"  type="text" name="mission"value="" />
+                        <label >Mission</label>
+                    </div>
+                      <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                          
+                          <input class="form-control" type="submit" value="register" style="background-color: #333; color: #ccc">
+                      </div>
+                  </form> 
+    {% endblock content %}

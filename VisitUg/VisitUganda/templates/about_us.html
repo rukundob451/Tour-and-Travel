@@ -1,0 +1,98 @@
+{% extends 'client_main.html' %}
+{% load static %}
+{% block content %}
+<div class="site-header">
+  <div class="container">
+      <div class="main-header">
+          <div class="row">
+              <div class="col-md-4 col-sm-6 col-xs-10">
+                  <div class="logo">
+                      <a href="#">
+                          <img src="{% static 'images/logo.png' %}" alt="travel html5 template" title="travel html5 template">
+                      </a>
+                  </div> <!-- /.logo -->
+              </div> <!-- /.col-md-4 -->
+              <div class="col-md-8 col-sm-6 col-xs-2">
+                  <div class="main-menu">
+                      <ul class="visible-lg visible-md">
+                          <li><a href="{% url 'index' %}">Home</a></li>
+                          <li><a href="{% url 'services' %}">Companies</a></li>
+                          <li><a href="{% url 'events' %}">Services</a></li>
+                        <li class="active"><a href="{% url 'about' %}">About Us</a></li>
+                          <li><a href="{% url 'contact' %}">Contact</a></li>
+                          {% if request.user.is_authenticated %}
+                                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                                    {% endif %}
+                      </ul>
+                      <a href="#" class="toggle-menu visible-sm visible-xs">
+                          <i class="fa fa-bars"></i>
+                      </a>
+                  </div> <!-- /.main-menu -->
+              </div> <!-- /.col-md-8 -->
+          </div> <!-- /.row -->
+      </div> <!-- /.main-header -->
+      <div class="row">
+          <div class="col-md-12 visible-sm visible-xs">
+              <div class="menu-responsive">
+                  <ul>
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'services' %}">Companies</a></li>
+                    <li><a href="{% url 'events' %}">Services</a></li>
+                  <li class="active"><a href="{% url 'about' %}">About Us</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    {% if request.user.is_authenticated %}
+                                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                                    {% endif %}
+                  </ul>
+              </div> <!-- /.menu-responsive -->
+          </div> <!-- /.col-md-12 -->
+      </div> <!-- /.row -->
+  </div> <!-- /.container -->
+</div> <!-- /.site-header -->
+
+<div class="page-top" id="templatemo_about">
+</div> <!-- /.page-header -->
+
+<div class="middle-content">
+  <div class="container">
+  
+      <div class="row"><!-- first row -->
+      
+        <div class="col-md-6"><!-- first column -->
+              <div class="widget-item">
+                  <h3 class="widget-title">Our Company</h3>
+                  <div class="sample-thumb">
+                      <img src="{% static 'images/about_1.jpg' %}" alt="about us" title="about us">
+                  </div> <!-- /.sample-thumb -->
+                  <h4 class="consult-title">Who we are</h4>
+                  <p>The tour and travel system offers a large range of travel opportunities to the customers.
+                     </p>
+                    <p>To make this happen, we provide the tour comapnies around Uganda with the opportunitiesto connect
+                        to very many clients all over the world
+                    </P>    </div> <!-- /.widget-item -->
+          </div> <!-- /.col-md-4 -->
+
+          <div class="col-md-6"><!-- second column -->
+              <div class="widget-item">
+                  <h3 class="widget-title">Our Team</h3>
+                  <div class="sample-thumb">
+                      <img src="{% static 'images/about_2.jpg' %}" alt="company" title="company">
+                  </div> <!-- /.sample-thumb -->
+                  <h4 class="consult-title">How we work</h4>
+                  <p>As a tour operator, you have the opportunity to decide where 
+                    your money and that of your travellers ends up. Here are five initiatives 
+                    to ensure that the expenses from the travel you offer 
+                    benefit the destination and the communities your customers are visiting.</p>
+              </div> <!-- /.widget-item -->
+          </div> <!-- /.col-md-4 -->
+          
+          
+          
+      </div> <!-- /.row first -->
+      
+      
+      
+  </div> <!-- /.container -->
+</div> <!-- /.middle-content -->
+
+{% endblock content %}
